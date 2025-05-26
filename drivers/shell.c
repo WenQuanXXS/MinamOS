@@ -33,7 +33,7 @@ const char scancode_to_char_lower_case[] = {
 
 #define SC_MAX 57
 
-static char key_buffer[1024] = {0};
+static volatile char key_buffer[1024] = {0};
 
 bool is_Shift = true;
 

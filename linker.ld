@@ -25,4 +25,10 @@ SECTIONS
         *(.bss)
         *(COMMON)
     }
+
+    /* 预留栈空间，放在高地址 */
+    . = 0x80000;
+    stack_top = .;
+    . = . + 0x2000;   /* 8KB 栈 */
+    stack_bottom = .;
 }

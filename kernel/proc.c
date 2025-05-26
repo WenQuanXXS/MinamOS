@@ -60,20 +60,16 @@ pcb_t* create_process(void (*entry)()) {
 // void schedule() {
 //     if (!ready_queue) return;
 
-//     pcb_t* next_process;
 //     if (!current_process) {
 //         current_process = ready_queue;
-//         cpu_context_t dummy;
-//         //context_switch(&dummy, &current_process->context);
+//         // context_switch(NULL, &current_process->context); // 如果需要上下文切换
 //     } else {
-//         char pid_str[10];
-//         int_to_string(current_process->pid, pid_str);
-//         println_string(pid_str);
-
-//         next_process = current_process->next ? current_process->next : ready_queue;
-//         pcb_t* prev_process = current_process;
-//         current_process = next_process;
-//         //context_switch(&prev_process->context, &current_process->context);
+//         pcb_t* next_process = current_process->next ? current_process->next : ready_queue;
+//         if (next_process != current_process) {
+//             pcb_t* prev_process = current_process;
+//             current_process = next_process;
+//             // context_switch(&prev_process->context, &current_process->context); // 如果需要上下文切换
+//         }
 //     }
 // }
 

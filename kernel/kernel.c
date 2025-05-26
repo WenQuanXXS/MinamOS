@@ -8,6 +8,8 @@
 #include "mem.h"
 #include "proc.h"
 
+extern char stack_top[];
+
 void proc(){
     while (1)
     {
@@ -17,6 +19,7 @@ void proc(){
 }
 
 void main() {
+    asm volatile("movl %0, %%esp" : : "r"(stack_top));
     clear_screen();
     print_logo_in_random_color();
     show_version();
@@ -32,6 +35,7 @@ void main() {
 
     init_shell();
     create_process(proc);
+
     print_ready_queue();
 }
 
