@@ -24,5 +24,6 @@ typedef struct pcb {
 void init_scheduler();
 pcb_t* create_process(void (*entry)());
 void schedule();
+void print_ready_queue();
 
 extern void context_switch(cpu_context_t*, cpu_context_t*);

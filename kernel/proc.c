@@ -79,10 +79,12 @@ pcb_t* create_process(void (*entry)()) {
 
 void print_ready_queue(){
     pcb_t* tmp = ready_queue;
+    print_string("Current process: ");
     while (tmp) {
         char pid_str[10];
         int_to_string(tmp->pid, pid_str);
-        println_string(pid_str);
+        print_string(pid_str);
+        print_string(" ");
         tmp = tmp->next;
     }
 }

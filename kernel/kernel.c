@@ -32,6 +32,7 @@ void main() {
 
     init_shell();
     create_process(proc);
+    print_ready_queue();
 }
 
 void print_logo(){
