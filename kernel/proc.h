@@ -25,4 +25,4 @@ void init_scheduler();
 pcb_t* create_process(void (*entry)());
 void schedule();
 
-//extern void context_switch(cpu_context_t*, cpu_context_t*);
+extern void context_switch(cpu_context_t*, cpu_context_t*);

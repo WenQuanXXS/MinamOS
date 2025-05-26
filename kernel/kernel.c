@@ -6,8 +6,15 @@
 #include "../cpu/idt.h"
 #include "util.h"
 #include "mem.h"
-//#include "proc.h"
+#include "proc.h"
 
+void proc(){
+    while (1)
+    {
+        print_string("1");
+    }
+    
+}
 
 void main() {
     clear_screen();
@@ -21,7 +28,10 @@ void main() {
     init_dynamic_mem();
     print_dynamic_mem();
 
+    init_scheduler();
+
     init_shell();
+    create_process(proc);
 }
 
 void print_logo(){

@@ -15,7 +15,6 @@ int current_pid = 0;
 void init_scheduler() {
     current_process = NULL;
     ready_queue = NULL;
-    println_string("INIT SUCCESS");
 }
 
 extern void process_exit(); // 新增：进程返回时的死循环
