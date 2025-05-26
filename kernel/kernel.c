@@ -10,13 +10,7 @@
 
 extern char stack_top[];
 
-void proc(){
-    while (1)
-    {
-        print_string("1");
-    }
-    
-}
+
 
 void main() {
     asm volatile("movl %0, %%esp" : : "r"(stack_top));
@@ -34,9 +28,11 @@ void main() {
     init_scheduler();
 
     init_shell();
-    create_process(proc);
+    // schedule();
 
-    print_ready_queue();
+    // print_ready_queue();
+
+    //print_nl();
 }
 
 void print_logo(){
@@ -74,18 +70,3 @@ void show_version(){
     println_string("MinamOS | Version 0.0.1");
 }
 
-void proc1(){
-    while (1)
-    {
-        print_string("1");
-    }
-    
-}
-
-void proc2(){
-    while (1)
-    {
-        print_string("2");
-    }
-    
-}

@@ -24,11 +24,10 @@ context_switch:
     popfd
 
     mov eax, [esp + 8]      ; new context 指针
-
     mov esp, [eax + 0x1C]
     push dword [eax + 0x24]
     popfd
-    mov eax, [eax + 0x00]
+    mov eax, [eax + 0x00]   ; 使用保存的 eax 值
     mov ebx, [eax + 0x04]
     mov ecx, [eax + 0x08]
     mov edx, [eax + 0x0C]

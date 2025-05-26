@@ -2,7 +2,7 @@
 #include "../drivers/VGA_display.h"
 #include "../drivers/ports.h"
 #include "../kernel/util.h"
-//#include "../kernel/proc.h"
+#include "../kernel/proc.h"
 #include "isr.h"
 
 volatile uint32_t tick = 0;
@@ -10,6 +10,7 @@ volatile uint32_t tick = 0;
 static void timer_callback(registers_t *regs) {
     tick++;
     // tick--;
+    // println_string("Schedule:");
     // schedule();
 }
 

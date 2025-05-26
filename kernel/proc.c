@@ -62,13 +62,13 @@ pcb_t* create_process(void (*entry)()) {
 
 //     if (!current_process) {
 //         current_process = ready_queue;
-//         // context_switch(NULL, &current_process->context); // 如果需要上下文切换
+//         context_switch(NULL, &current_process->context); // 如果需要上下文切换
 //     } else {
 //         pcb_t* next_process = current_process->next ? current_process->next : ready_queue;
 //         if (next_process != current_process) {
 //             pcb_t* prev_process = current_process;
 //             current_process = next_process;
-//             // context_switch(&prev_process->context, &current_process->context); // 如果需要上下文切换
+//             context_switch(&prev_process->context, &current_process->context); // 如果需要上下文切换
 //         }
 //     }
 // }
