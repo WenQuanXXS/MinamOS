@@ -21,25 +21,36 @@ void main() {
     init_keyboard();
 
     init_dynamic_mem();
-    print_dynamic_mem();
+    // print_dynamic_mem();
 
     init_res_alloc();
 
-    if(alloc_res("resource", 1) == 1){
-        println_string("alloc");
-    }
-    println_string("---");
+    print_nl();
+    //println_string("------------------------------");
 
-    if(free_res("resource", 2) == 1){
-        println_string("free");
+    if(alloc_res("resource",1) == 1){
+        println_string("success alloc for 1");
     }
+
+    if(alloc_res("resource",2) == -2){
+        println_string("resource occupied");
+    }
+
+    // if(free_res("resource",1) == 1){
+    //     println_string("free resource by 1");
+    // }
+
+    // alloc_res("1",1);
+    // alloc_res("1",1);
+    // alloc_res("1",1);
+
+    // if(alloc_res("resource", 2) == 1){
+    //     println_string("success alloc for 2");
+    // }
+
+    // println_string("------------------------------");
 
     init_shell();
-    // schedule();
-
-    // print_ready_queue();
-
-    //print_nl();
 }
 
 void print_logo(){

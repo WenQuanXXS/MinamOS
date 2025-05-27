@@ -18,7 +18,7 @@ void init_res_alloc() {
     string_copy(example_res.name, "resource");
     example_res.owner_id = -1;
 
-    println_string("Ini Suc");
+    // println_string("Ini Suc");
 }
 
 int alloc_res(const char* name, int owner_id){

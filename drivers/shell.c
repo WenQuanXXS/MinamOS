@@ -38,13 +38,12 @@ static volatile char key_buffer[1024] = {0};
 
 bool is_Shift = true;
 
-char str[16] = "resource";
 
 void init_shell(){
     print_string(">>>");
 }
 
-void execute_command(char *input){
+void execute_command(const char *input){
     if(compare_string(input, "") == 0) return;
     print_nl();
     // print_string("[DEBUG]");
@@ -52,30 +51,33 @@ void execute_command(char *input){
     // print_nl();
     if (compare_string(input, "clear") == 0) {
         clear_screen();
-
+        return;
     }
-    else if (compare_string(input, "help") == 0) {
-        println_string("Available commands: clear, help, mem");
     
+    if (compare_string(input, "help") == 0) {
+        print_string("Available commands: clear, help, mem");
+        return;
     }
-    else if (compare_string(input,"mem") == 0) {
+    
+    if (compare_string(input, "mem") == 0) {
         print_dynamic_mem();
+        return;
     }
-    else if (compare_string(input,"test alloc") == 0) {
+    
+    if (compare_string(input, "mem alloc") == 0) {
         mem_alloc(16);
         mem_alloc(32);
         mem_alloc(64);
+        return;
     }
-    else if (compare_string(input,"test free") == 0){
+    
+    if (compare_string(input, "mem free") == 0) {
         int *p = (int*)mem_alloc(sizeof(int));
         mem_free(p);
+        return;
     }
-    else if(compare_string(input,"aquire") == 0){
-        print_string("lock...");
-    }
-    else {
-        print_string_in_color(input, LIGHT_RED_ON_BLACK);
-    }
+    
+    print_string_in_color(input, LIGHT_RED_ON_BLACK);
 }
 
 void handle_input(uint8_t scancode){

@@ -66,7 +66,7 @@ void print_dynamic_mem() {
         print_dynamic_mem_node(current);
         current = current->next;
     }
-    print_string("]\n");
+    print_string("]");
 }
 
 void *find_best_mem_block(dynamic_mem_node_t *dynamic_mem, size_t size) {
