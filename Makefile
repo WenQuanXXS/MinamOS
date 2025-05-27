@@ -2,10 +2,18 @@
 # $< = first dependency
 # $^ = all dependencies
 
-# detect all .o files based on their .c source
+# detect all .c files
 C_SOURCES = $(wildcard kernel/*.c drivers/*.c cpu/*.c)
-HEADERS = $(wildcard kernel/*.h  drivers/*.h cpu/*.h)
-OBJ_FILES = ${C_SOURCES:.c=.o cpu/interrupt.o kernel/context_switch.o}
+HEADERS = $(wildcard kernel/*.h drivers/*.h cpu/*.h)
+
+# Convert .c files to .o files
+C_OBJ_FILES = ${C_SOURCES:.c=.o}
+
+# Special assembly files
+ASM_OBJ_FILES = cpu/interrupt.o kernel/context_switch.o
+
+# Combine all object files
+OBJ_FILES = $(C_OBJ_FILES) $(ASM_OBJ_FILES)
 
 # First rule is the one executed when no parameters are fed to the Makefile
 all: run

@@ -6,11 +6,9 @@
 #include "../cpu/idt.h"
 #include "util.h"
 #include "mem.h"
-#include "proc.h"
+#include "sync.h"
 
 extern char stack_top[];
-
-
 
 void main() {
     asm volatile("movl %0, %%esp" : : "r"(stack_top));
@@ -25,8 +23,7 @@ void main() {
     init_dynamic_mem();
     print_dynamic_mem();
 
-    init_scheduler();
-
+    init_res_alloc();
     init_shell();
     // schedule();
 

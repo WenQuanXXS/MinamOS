@@ -4,6 +4,7 @@
 #include "../kernel/util.h"
 #include "../kernel/mem.h"
 #include <stdbool.h>
+#include "../kernel/sync.h"
 
 const char scancode_to_char_upper_case[] = {
     '?', '?', '1', '2', '3', '4', '5',
@@ -37,11 +38,14 @@ static volatile char key_buffer[1024] = {0};
 
 bool is_Shift = true;
 
+char str[16] = "resource";
+
 void init_shell(){
     print_string(">>>");
 }
 
 void execute_command(char *input){
+    if(compare_string(input, "") == 0) return;
     print_nl();
     // print_string("[DEBUG]");
     // print_string(input);

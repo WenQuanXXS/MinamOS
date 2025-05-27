@@ -74,7 +74,7 @@ void clear_buffer(char buffer[]) {
     for (int i = 0; i < 1024; i++) buffer[i] = '\0';
 }
 
-int compare_string(char s1[], char s2[]) {
+int compare_string(const char s1[], const char s2[]) {
     int i;
     for (i = 0; s1[i] == s2[i]; i++) {
         if (s1[i] == '\0') return 0;

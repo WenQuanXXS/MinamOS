@@ -21,11 +21,11 @@ void append(char s[], char n);
 
 bool backspace(char buffer[]);
 
-bool clear_buffer(char buffer[]);
+void clear_buffer(char buffer[]);
 
-int compare_string(char s1[], char s2[]);
+int compare_string(const char s1[], const char s2[]);
 
 int max(int a, int b);
 int min(int a, int b);
 
-void memset(void *ptr, int value, size_t num);
+void* memset(void *ptr, int value, size_t num);
