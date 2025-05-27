@@ -26,29 +26,10 @@ void main() {
     init_res_alloc();
 
     print_nl();
-    //println_string("------------------------------");
 
-    if(alloc_res("resource",1) == 1){
-        println_string("success alloc for 1");
-    }
+    test_res();
 
-    if(alloc_res("resource",2) == -2){
-        println_string("resource occupied");
-    }
-
-    // if(free_res("resource",1) == 1){
-    //     println_string("free resource by 1");
-    // }
-
-    // alloc_res("1",1);
-    // alloc_res("1",1);
-    // alloc_res("1",1);
-
-    // if(alloc_res("resource", 2) == 1){
-    //     println_string("success alloc for 2");
-    // }
-
-    // println_string("------------------------------");
+    // print_nl();
 
     init_shell();
 }
@@ -88,3 +69,20 @@ void show_version(){
     println_string("MinamOS | Version 0.0.1");
 }
 
+void test_res(){
+    if(alloc_res("resource",1) == 1){
+        println_string("success alloc for 1");
+    }
+
+    if(alloc_res("resource",2) == -2){
+        println_string("resource occupied");
+    }
+
+    if(free_res("resource",1) == 1){
+        println_string("free resource by 1");
+    }
+
+    if(alloc_res("resource", 2) == 1){
+        println_string("success alloc for 2");
+    }
+}

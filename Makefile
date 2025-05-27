@@ -10,7 +10,7 @@ HEADERS = $(wildcard kernel/*.h drivers/*.h cpu/*.h)
 C_OBJ_FILES = ${C_SOURCES:.c=.o}
 
 # Special assembly files
-ASM_OBJ_FILES = cpu/interrupt.o kernel/context_switch.o
+ASM_OBJ_FILES = cpu/interrupt.o
 
 # Combine all object files
 OBJ_FILES = $(C_OBJ_FILES) $(ASM_OBJ_FILES)
