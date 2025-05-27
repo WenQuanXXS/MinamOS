@@ -3,19 +3,48 @@
 #include "../kernel/util.h"
 #include <stddef.h>
 
-// 使用固定地址的资源表
-static res_t* res_table = (res_t*)RES_TABLE_ADDR;
+/**
+ * return:
+ * 1 :success
+ * 0 :not found
+ * -1:not owner/error
+ * -2:occupied
+ */
+
+res_t example_res;
 
 void init_res_alloc() {
-    // 使用memset初始化，避免直接访问可能冲突的内存
-    memset(res_table, 0, sizeof(res_t) * MAX_RES);
-    
-    // 初始化每个资源项
-    for (int i = 0; i < MAX_RES; i++) {
-        res_table[i].is_allocated = 0;
-        res_table[i].owner_id = -1;
-        res_table[i].name[0] = '\0';
+    example_res.is_allocated = 0;
+    string_copy(example_res.name, "resource");
+    example_res.owner_id = -1;
+
+    println_string("Ini Suc");
+}
+
+int alloc_res(const char* name, int owner_id){
+    if(owner_id < 0) return -1;
+    if(compare_string(example_res.name, name) == 0){
+        if(example_res.is_allocated == 0){
+            example_res.owner_id = owner_id;
+            example_res.is_allocated = 1;
+            return 1;
+        }
+        return -2;
     }
+    return 0;
+}
+
+int free_res(const char* name, int owner_id){
+    if(owner_id < 0) return -1;
+    if(compare_string(example_res.name, name) == 0){
+        if(example_res.owner_id == owner_id){
+            example_res.owner_id = -1;
+            example_res.is_allocated = 0;
+            return 1;
+        }
+        else return -2;
+    }
+    return 0;
 }
 
 // int alloc_res(const char* name, int owner_id) {

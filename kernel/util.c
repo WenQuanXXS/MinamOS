@@ -97,3 +97,12 @@ void* memset(void* ptr, int value, size_t num) {
         *p = (uint8_t)value;
     return ptr;
 }
+
+void string_copy(char* a, char* b) {
+    int i = 0;
+    while (b[i] != '\0') {
+        a[i] = b[i];
+        i++;
+    }
+    a[i] = '\0'; // Copy the null terminator
+}

@@ -29,3 +29,5 @@ int max(int a, int b);
 int min(int a, int b);
 
 void* memset(void *ptr, int value, size_t num);
+
+void string_copy(char* a, char* b);

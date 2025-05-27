@@ -24,6 +24,16 @@ void main() {
     print_dynamic_mem();
 
     init_res_alloc();
+
+    if(alloc_res("resource", 1) == 1){
+        println_string("alloc");
+    }
+    println_string("---");
+
+    if(free_res("resource", 2) == 1){
+        println_string("free");
+    }
+
     init_shell();
     // schedule();
 
