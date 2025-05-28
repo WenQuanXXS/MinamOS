@@ -12,16 +12,17 @@ extern char stack_top[];
 
 void main() {
     asm volatile("movl %0, %%esp" : : "r"(stack_top));
+
     clear_screen();
     print_logo_in_random_color();
     show_version();
+    
     isr_install();
     init_timer(50);
     asm volatile("sti");
     init_keyboard();
 
     init_dynamic_mem();
-    // print_dynamic_mem();
 
     init_res_alloc();
 
@@ -29,24 +30,11 @@ void main() {
 
     test_res();
 
-    // print_nl();
+    print_nl();
+
+    test_mem();
 
     init_shell();
-}
-
-void print_logo(){
-    // 打印浅灰色的logo
-    println_string_in_color(" __       __  __                                     ______    ______  ", LIGHT_GREY_ON_BLACK);
-    println_string_in_color("|  \\     /  \\|  \\                                   /      \\  /      \\ ", LIGHT_GREY_ON_BLACK);
-    println_string_in_color("| $$\\   /  $$ \\$$ _______    ______   ______ ____  |  $$$$$$\\|  $$$$$$\\", LIGHT_GREY_ON_BLACK);
-    println_string_in_color("| $$$\\ /  $$$|  \\|       \\  |      \\ |      \\    \\ | $$  | $$| $$___\\$$", LIGHT_GREY_ON_BLACK);
-    println_string_in_color("| $$$$\\  $$$$| $$| $$$$$$$\\  \\$$$$$$\\| $$$$$$\\$$$$\\| $$  | $$ \\$$    \\ ", LIGHT_GREY_ON_BLACK);
-    println_string_in_color("| $$\\$$ $$ $$| $$| $$  | $$ /      $$| $$ | $$ | $$| $$  | $$ _\\$$$$$$\\", LIGHT_GREY_ON_BLACK);
-    println_string_in_color("| $$ \\$$$| $$| $$| $$  | $$|  $$$$$$$| $$ | $$ | $$| $$__/ $$|  \\__| $$", LIGHT_GREY_ON_BLACK);
-    println_string_in_color("| $$  \\$ | $$| $$| $$  | $$ \\$$    $$| $$ | $$ | $$ \\$$    $$ \\$$    $$", LIGHT_GREY_ON_BLACK);
-    println_string_in_color(" \\$$      \\$$ \\$$ \\$$   \\$$  \\$$$$$$$ \\$$  \\$$  \\$$  \\$$$$$$   \\$$$$$$  ", LIGHT_GREY_ON_BLACK);
-    println_string_in_color("                                                                 ", LIGHT_GREY_ON_BLACK);
-
 }
 
 void print_logo_in_random_color(){
@@ -85,4 +73,16 @@ void test_res(){
     if(alloc_res("resource", 2) == 1){
         println_string("success alloc for 2");
     }
+}
+
+void test_mem(){
+    println_string("alloc memory, size of int");
+    int *ptr = (int*)mem_alloc(sizeof(int));
+    print_dynamic_mem();
+    print_nl();
+    println_string("free memory");
+    mem_free(ptr);
+    print_dynamic_mem();
+    print_nl();
+    return ;
 }

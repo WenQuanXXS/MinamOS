@@ -8,6 +8,9 @@ volatile uint32_t tick = 0;
 
 static void timer_callback(registers_t *regs) {
     tick++;
+    // char num[10];
+    // int_to_string(tick, num);
+    // println_string(num);
 }
 
 void init_timer(uint32_t freq) {
