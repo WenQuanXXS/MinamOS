@@ -28,11 +28,11 @@ void main() {
 
     print_nl();
 
-    test_res();
+    // test_res();
 
-    print_nl();
+    // print_nl();
 
-    test_mem();
+    // test_mem();
 
     init_shell();
 }
@@ -76,12 +76,14 @@ void test_res(){
 }
 
 void test_mem(){
-    println_string("alloc memory, size of int");
-    int *ptr = (int*)mem_alloc(sizeof(int));
+    println_string("alloc memory, size of int * 3");
+    int *ptr1 = (int*)mem_alloc(sizeof(int));
+    int *ptr2 = (int*)mem_alloc(sizeof(int));
+    int *ptr3 = (int*)mem_alloc(sizeof(int));
     print_dynamic_mem();
     print_nl();
-    println_string("free memory");
-    mem_free(ptr);
+    println_string("free second memory block");
+    mem_free(ptr2);
     print_dynamic_mem();
     print_nl();
     return ;

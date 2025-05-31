@@ -4,6 +4,7 @@
         "keyboard.h": "c",
         "vga_display.h": "c",
         "timer.h": "c",
-        "idt.h": "c"
+        "idt.h": "c",
+        "stdint.h": "c"
     }
 }
